@@ -1,0 +1,123 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/00b6947f-35df-4f48-982d-75d034802969/ # 
+title: RetailApiBee
+mediaType: 
+  - application/json
+
+traits:
+  Create All ProCategory: !include Traits/CreateAllProductsCatagory.raml
+  Create Bill Data: !include Traits/CreateBillsData.raml
+  Create Product: !include Traits/CreateProduct.raml
+  Delete Bill By Id: !include Traits/DeleteBillById.raml
+  Delete Product CatagorybyId: !include Traits/DeleteproductCatagorybyId.raml
+  Delete Products ById: !include Traits/DeleteproductsbyId.raml
+  Get All Bills Response: !include Traits/GetAllBillsResponse.raml
+  Get All Products: !include Traits/GetAllProducts.raml
+  Get Bills: !include Traits/GetBill.raml
+  Get All Products Catagory: !include Traits/GetProductsCatagoryalldata.raml
+  Get Products By ID: !include Traits/GetProductsbyID.raml
+  Get Products Catagory by ID: !include Traits/GetproductCatagorybyId.raml
+  Update Bill By Id: !include Traits/UpdateBillById.raml
+  Update Products By Id: !include Traits/UpdateProductsbyId.raml
+  Update Product Catagory by Id: !include Traits/UpdateproductCatagorybyId.raml
+
+  
+
+/products:
+  get:
+    description: retrive all products
+    is:
+      - Get All Products:
+  post:
+      description: Create All Products
+      is:
+      - Create Product:
+  
+       
+                           
+  /{id}:
+    uriParameters:
+      id:
+        type: integer
+        required: true
+    get: 
+    description: retrive specific products
+    is:
+      Get Products By ID:
+    put:
+      description: update by specfic id 
+      is:
+        - Update Products By Id:        
+                
+    delete: 
+     description: remove by specfic id
+     is:
+        - Delete Products ById:
+    post:
+      description: Create All Products
+      is:
+      - Create Product:
+       
+/Bills:
+  description: retrive all bill data
+  displayName: Get Bill Data
+  get:
+    description: fetch bill data
+    is:
+      - Get All Bills Response:           
+
+  /{id}:
+    uriParameters:
+      id:
+        type: integer
+        required: true    
+    get:
+      description: retrive specific Bill Data
+      is:
+        - Get Bills:
+    put:
+    description: Update bill data
+    is:
+      Update Bill By Id:
+    delete:
+      description: remove bill data by particular id
+      is:
+        - Delete Bill By Id:
+    post:
+      description: Creates Bills Data
+      is:
+        - Create Bill Data:       
+          
+/productcatagory: 
+  description: List all product catagories
+  get:
+    description: retrive lists of all product category data
+    is:
+      - Get All Products Catagory:
+  
+  /{id}:
+    uriParameters:
+        id:
+          type: integer
+          required: true      
+    get:
+      description: retrive product category by id
+      is:
+        - Get Products Catagory by ID:
+    put:
+      description: update product Catagory by specfic id 
+      is:
+        - Update Product Catagory by Id:
+          
+    delete:     
+      description: remove by specfic id
+      is:
+        - Delete Product CatagorybyId:
+                   
+
+    post:
+      description: create all productcategory Datas by
+      displayName: Product Catagory Data
+      is:
+      - Create All ProCategory:
+        

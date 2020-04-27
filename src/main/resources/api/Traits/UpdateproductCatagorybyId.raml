@@ -1,0 +1,30 @@
+#%RAML 1.0 Trait
+responses:
+  200:
+    body:
+      application/json:
+        example:
+          {"update"}
+
+  500:
+    body:
+      application/json:
+        example:
+          {"Internal Server Error"}
+
+  400:
+    body:
+      application/json:
+        example:
+          {"Bad Gateway"}  
+  503:
+    body:
+      application/json:
+        example:
+          {"Service Unavailable"}
+  
+  501:
+    body:
+      application/json:
+        example: 
+          { Not Implemented }
